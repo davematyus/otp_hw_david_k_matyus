@@ -19,7 +19,14 @@ class AppColors extends ThemeExtension<AppColors> {
   });
 
   @override
-  AppColors copyWith({Color? dark, Color? card, Color? text, Color? lightText, Color? disabledText, Color? disabled}) {
+  AppColors copyWith({
+    Color? dark,
+    Color? card,
+    Color? text,
+    Color? lightText,
+    Color? disabledText,
+    Color? disabled,
+  }) {
     return AppColors(
       dark: dark ?? this.dark,
       card: card ?? this.card,

@@ -46,6 +46,13 @@ High-level overview (see `doc/ARCHITECTURE.md` for details):
 
 - `flutter run` (bash)
 
+## Format
+
+- `dart format .` (bash)
+
+## Analyze:
+
+- `flutter analyze` (bash)
 
 ---
 

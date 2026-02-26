@@ -23,14 +23,8 @@ class App extends StatelessWidget {
 
     return MaterialApp(
       title: 'Stopwatch',
-      theme: ThemeData(
-        useMaterial3: true,
-        extensions: const [appColors],
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        extensions: const [appColors],
-      ),
+      theme: ThemeData(useMaterial3: true, extensions: const [appColors]),
+      darkTheme: ThemeData(useMaterial3: true, extensions: const [appColors]),
       themeMode: ThemeMode.system,
       home: const StopwatchScreen(),
     );

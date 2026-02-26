@@ -91,9 +91,7 @@ class _StopwatchScreenBody extends ConsumerWidget {
                   onPressed: s.isRunning
                       ? () => c.pause(now())
                       : () => c.start(now()),
-                  style: FilledButton.styleFrom(
-                    backgroundColor: colors.dark,
-                  ),
+                  style: FilledButton.styleFrom(backgroundColor: colors.dark),
                   child: Text(s.isRunning ? 'Pause' : 'Start'),
                 ),
                 OutlinedButton(
@@ -111,10 +109,7 @@ class _StopwatchScreenBody extends ConsumerWidget {
                   onPressed: s.isRunning ? () => c.lap(now()) : null,
                   style: ButtonStyle(
                     side: WidgetStateProperty.resolveWith<BorderSide>((states) {
-                      final enabled = BorderSide(
-                        color: colors.dark,
-                        width: 2,
-                      );
+                      final enabled = BorderSide(color: colors.dark, width: 2);
                       final disabled = BorderSide(
                         color: colors.disabled,
                         width: 2,
@@ -151,10 +146,7 @@ class _StopwatchScreenBody extends ConsumerWidget {
       backgroundColor: colors.dark,
       appBar: AppBar(
         backgroundColor: colors.dark,
-        title: Text(
-          'Stopwatch',
-          style: TextStyle(color: colors.text),
-        ),
+        title: Text('Stopwatch', style: TextStyle(color: colors.text)),
       ),
       body: SafeArea(
         child: LayoutBuilder(
