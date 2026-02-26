@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/theme/theme.dart';
+import '../../../core/theme/theme_own.dart';
 import '../../../core/time/now_provider.dart';
 import '../../../core/time/tick_source.dart';
 import '../../../core/time/tick_source_provider.dart';

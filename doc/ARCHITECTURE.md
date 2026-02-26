@@ -82,7 +82,7 @@ Purpose: abstract the “current time” and “tick stream” for testability.
 ### `core/theme`
 
 - `AppColors`: `ThemeExtension` holding the app palette
-- `ThemeX` on `BuildContext`:
+- `ThemeOwn` on `BuildContext`:
     - `context.appColors` to access the palette from widgets
 
 ### `core/format`

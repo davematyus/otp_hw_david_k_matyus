@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:otp_hw_david_k_matyus/core/format/duration_format.dart';
-import '../../../../core/theme/theme.dart';
+import '../../../../core/theme/theme_own.dart';
 
 class DigitalClock extends StatelessWidget {
   final Duration elapsed;
