@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:otp_hw_david_k_matyus/core/format/duration_format.dart';
+import '../../../../core/theme/theme.dart';
 
 class DigitalClock extends StatelessWidget {
   final Duration elapsed;
@@ -10,12 +11,14 @@ class DigitalClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appColors;
+
     return Text(
       DurationFormat.stopwatch(elapsed),
       key: textKey,
       style: Theme.of(context).textTheme.displaySmall?.copyWith(
         fontFeatures: const [FontFeature.tabularFigures()],
-        color: const Color(0xFFFFFFFF),
+        color: colors.text,
       ),
     );
   }

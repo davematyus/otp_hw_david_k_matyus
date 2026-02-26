@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:otp_hw_david_k_matyus/core/format/duration_format.dart';
+import '../../../../core/theme/theme.dart';
 import '../../domain/lap.dart';
 
 class LapList extends StatelessWidget {
@@ -10,19 +11,21 @@ class LapList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appColors;
+
     return Card(
-      color: const Color(0xFF00403D),
+      color: colors.card,
       child: Column(
         children: [
           ListTile(
-            textColor: const Color(0xFFFFFFFF),
+            textColor: colors.text,
             title: const Text('Laps'),
             trailing: TextButton(
               onPressed: onClear,
               style: TextButton.styleFrom(
-                backgroundColor: const Color(0x66061226),
-                foregroundColor: const Color(0xFFFFFFFF),
-                disabledForegroundColor: const Color(0x66FFFFFF),
+                backgroundColor: colors.disabled,
+                foregroundColor: colors.text,
+                disabledForegroundColor: colors.disabledText,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
                   vertical: 12,
@@ -37,13 +40,13 @@ class LapList extends StatelessWidget {
           const Divider(height: 1),
           Expanded(
             child: laps.isEmpty
-                ? const Padding(
-                    padding: EdgeInsets.only(top: 32),
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 32),
                     child: Align(
                       alignment: Alignment.topCenter,
                       child: Text(
                         'No laps yet',
-                        style: TextStyle(color: Color(0xFFFFFFFF)),
+                        style: TextStyle(color: colors.text),
                       ),
                     ),
                   )
@@ -56,11 +59,11 @@ class LapList extends StatelessWidget {
                         dense: true,
                         title: Text(
                           '#${lap.index}   +${DurationFormat.stopwatch(lap.lap)}',
-                          style: const TextStyle(color: Color(0xFFFFFFFF)),
+                          style: TextStyle(color: colors.text),
                         ),
                         trailing: Text(
                           DurationFormat.stopwatch(lap.total),
-                          style: const TextStyle(color: Color(0x99FFFFFF)),
+                          style: TextStyle(color: colors.lightText),
                         ),
                       );
                     },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/theme/theme.dart';
 import '../../../core/time/now_provider.dart';
 import '../../../core/time/tick_source.dart';
 import '../../../core/time/tick_source_provider.dart';
@@ -62,12 +63,13 @@ class _StopwatchScreenState extends ConsumerState<StopwatchScreen>
 class _StopwatchScreenBody extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final colors = context.appColors;
     final s = ref.watch(stopwatchProvider);
     final c = ref.read(stopwatchProvider.notifier);
     final now = ref.read(nowProvider);
 
     final mainCard = Card(
-      color: const Color(0xFF00403D),
+      color: colors.card,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -90,7 +92,7 @@ class _StopwatchScreenBody extends ConsumerWidget {
                       ? () => c.pause(now())
                       : () => c.start(now()),
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF061226),
+                    backgroundColor: colors.dark,
                   ),
                   child: Text(s.isRunning ? 'Pause' : 'Start'),
                 ),
@@ -99,9 +101,9 @@ class _StopwatchScreenBody extends ConsumerWidget {
                       ? null
                       : () => c.reset(),
                   style: OutlinedButton.styleFrom(
-                    side: const BorderSide(color: Color(0xFF061226), width: 2),
-                    foregroundColor: const Color(0xFFFFFFFF),
-                    disabledForegroundColor: const Color(0x66FFFFFF),
+                    side: BorderSide(color: colors.dark, width: 2),
+                    foregroundColor: colors.text,
+                    disabledForegroundColor: colors.disabledText,
                   ),
                   child: const Text('Reset'),
                 ),
@@ -109,12 +111,12 @@ class _StopwatchScreenBody extends ConsumerWidget {
                   onPressed: s.isRunning ? () => c.lap(now()) : null,
                   style: ButtonStyle(
                     side: WidgetStateProperty.resolveWith<BorderSide>((states) {
-                      const enabled = BorderSide(
-                        color: Color(0xFF061226),
+                      final enabled = BorderSide(
+                        color: colors.dark,
                         width: 2,
                       );
-                      const disabled = BorderSide(
-                        color: Color(0x66061226),
+                      final disabled = BorderSide(
+                        color: colors.disabled,
                         width: 2,
                       );
                       return states.contains(WidgetState.disabled)
@@ -124,8 +126,8 @@ class _StopwatchScreenBody extends ConsumerWidget {
                     foregroundColor: WidgetStateProperty.resolveWith<Color>((
                       states,
                     ) {
-                      const enabled = Color(0xFFFFFFFF);
-                      const disabled = Color(0x66FFFFFF);
+                      final enabled = colors.text;
+                      final disabled = colors.disabledText;
                       return states.contains(WidgetState.disabled)
                           ? disabled
                           : enabled;
@@ -146,12 +148,12 @@ class _StopwatchScreenBody extends ConsumerWidget {
     );
 
     return Scaffold(
-      backgroundColor: const Color(0xFF061226),
+      backgroundColor: colors.dark,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF061226),
-        title: const Text(
+        backgroundColor: colors.dark,
+        title: Text(
           'Stopwatch',
-          style: TextStyle(color: Color(0xFFFFFFFF)),
+          style: TextStyle(color: colors.text),
         ),
       ),
       body: SafeArea(

@@ -1,17 +1,82 @@
-# otp_hw_david_k_matyus
+# OTP Homework — Stopwatch (Flutter)
 
-A new Flutter project.
+A small, well-structured Stopwatch app built with Flutter + Riverpod.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Start / Pause / Reset stopwatch
+- Lap recording (lap + total times)
+- Lap list with clear action
+- Digital + analog clock visualization
+- Deterministic time/ticking via abstractions (test-friendly)
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Tech stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Flutter** (Material 3)
+- **State management**: `flutter_riverpod`
+- **Architecture**: feature-based + layered (domain / application / presentation)
+- **Testing**: `flutter_test` + Riverpod overrides
+
+---
+
+## Project structure
+
+High-level overview (see `doc/ARCHITECTURE.md` for details):
+
+---
+
+## Getting started
+
+### Requirements
+
+- Flutter SDK (matching your environment)
+- Dart SDK: see `pubspec.yaml` (`environment: sdk: ^3.11.0`)
+
+### Install dependencies
+
+- `flutter pub get` (bash)
+
+### Run tests
+
+- `flutter test` (bash)
+
+### Run the app
+
+- `flutter run` (bash)
+
+
+---
+
+## Design notes
+
+### Time is abstracted for testability
+
+The app does not hardcode `DateTime.now()` everywhere. Instead:
+
+- `nowProvider` provides a `DateTime Function()` (overridable in tests)
+- `TickSource` provides a ticking mechanism (real ticker in production, manual ticks in tests)
+
+This enables deterministic tests for “pause freezes time” and similar behaviors.
+
+### Theme colors are centralized
+
+`AppColors` is implemented as a `ThemeExtension`, so UI reads colors via:
+
+- `context.appColors`
+
+This keeps widgets clean and avoids passing color palettes through constructors.
+
+---
+
+## Documentation
+
+- Architecture & data flow: `doc/ARCHITECTURE.md`
+- Testing strategy: `doc/TESTING.md`
+
+---
+
+## License
+
+This project is for homework / educational purposes.

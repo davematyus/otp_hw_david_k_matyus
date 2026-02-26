@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import '../../../../core/theme/theme.dart';
 
 class AnalogClock extends StatelessWidget {
   final Duration elapsed;
@@ -8,6 +9,8 @@ class AnalogClock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appColors;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final size = constraints.biggest;
@@ -16,8 +19,8 @@ class AnalogClock extends StatelessWidget {
           size: size,
           painter: _AnalogClockPainter(
             elapsed: elapsed,
-            color: const Color(0xFFFFFFFF),
-            subtle: const Color(0xFF061226),
+            color: colors.text,
+            subtle: colors.dark,
           ),
         );
       },
